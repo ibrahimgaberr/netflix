@@ -1,0 +1,28 @@
+<div class="watch-page relative flex items-center justify-center min-h-screen bg-black">
+  <div>
+    <button
+    (click)="backToHome()"
+      class="absolute bottom-2 text-white rounded cursor-pointer flex items-center gap-2"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
+</svg>
+      Back
+    </button>
+  </div>
+  <div *ngIf="trailerUrl; else noTrailer" class="w-full max-w-5xl">
+    <iframe
+    class="mt-10"
+      [src]="trailerUrl"
+      width="100%"
+      height="600"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <ng-template #noTrailer>
+    <p class="text-white text-center">No trailer available for this movie.</p>
+  </ng-template>
+</div>

@@ -1,0 +1,74 @@
+
+<section id="banner" class="relative">
+  <div
+    *ngIf="bannerMovie"
+    class="relative w-full h-[800px] flex flex-col justify-center p-10 text-white bg-cover bg-center"
+    [ngStyle]="{
+      'background-image':
+        'url(' + imageBaseUrl + 'original' + bannerMovie.backdrop_path + ')'
+    }"
+  >
+    <!-- dark layer -->
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black"
+    ></div>
+
+    <div>
+      <p class="max-w-lg relative z-10">{{ bannerMovie.overview }}</p>
+      <div class="flex gap-[10px] relative z-10 my-10">
+        <button
+        (click)="playMovie(bannerMovie.id)"
+          class="bg-[#FFF] text-black rounded-[4px] py-2 px-5 flex items-center gap-2 font-bold cursor-pointer"
+        >
+          <img src="images/BlackTriangle.png" alt="icon" /> Play
+        </button>
+        <button
+          (click)="showDetails()"
+          class="bg-black/50 text-white rounded-[4px] py-2 px-5 flex items-center gap-2 font-bold cursor-pointer"
+        >
+          <img src="images/Info.png" alt="icon" /> More Info
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="container absolute -bottom-10 left-[50%] translate-x-[-50%]">
+    <app-movie-carousel
+      [title]="'Your Next Watch'"
+      [movies]="allPopularMovies"
+      [imageBaseUrl]="imageBaseUrl"
+    >
+    </app-movie-carousel>
+  </div>
+</section>
+<div class="container mt-20 mx-auto">
+  <app-movie-carousel
+    [title]="'My List'"
+    [movies]="allTrendingMovies"
+    [imageBaseUrl]="imageBaseUrl"
+  >
+  </app-movie-carousel>
+</div>
+<div class="container mt-20 mx-auto">
+  <app-movie-carousel
+    [title]="'Top Rated'"
+    [movies]="allToRatedMovies"
+    [imageBaseUrl]="imageBaseUrl"
+  >
+  </app-movie-carousel>
+</div>
+<div class="container my-20 mx-auto">
+  <app-movie-carousel
+    [title]="'Upcoming'"
+    [movies]="allUpComing"
+    [imageBaseUrl]="imageBaseUrl"
+  >
+  </app-movie-carousel>
+</div>
+
+<!-- movie details -->
+<app-movie-details
+  *ngIf="show"
+  [bannerDetails]="bannerMovie"
+
+  (close)="show = false"
+></app-movie-details>

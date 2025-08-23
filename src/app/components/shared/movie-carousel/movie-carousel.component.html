@@ -1,0 +1,20 @@
+
+  <h2 class="mb-2 text-xl font-bold text-white">{{ title }}</h2>
+
+  <p-carousel
+    [value]="movies"
+    [numVisible]="6"
+    [numScroll]="2"
+    [circular]="true"
+    [autoplayInterval]="3000"
+    [showIndicators]="false"
+    [showNavigators]="false"
+    [responsiveOptions]="responsiveOptions"
+  >
+    <ng-template let-movie pTemplate="item">
+      <div class="movie-card">
+        <img [src]="imageBaseUrl + 'original' + movie.poster_path" [alt]="movie.title" />
+      </div>
+    </ng-template>
+  </p-carousel>
+

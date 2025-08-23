@@ -1,0 +1,54 @@
+<header
+  class="fixed top-0 left-0 right-0 text-white flex justify-between items-center p-4 z-50"
+>
+  <div class="flex items-center space-x-4">
+    <img
+      src="images/logo.png"
+      alt="Logo"
+      (click)="backToHome()"
+      class="cursor-pointer"
+    />
+    <ul class="hidden lg:flex space-x-4">
+      <li class="text-sm">Home</li>
+      <li class="text-sm">TV Shows</li>
+      <li class="text-sm">Movies</li>
+      <li class="text-sm">News & Popular</li>
+      <li class="text-sm">My List</li>
+      <li class="text-sm">Browse by Language</li>
+    </ul>
+  </div>
+  <div class="flex items-center space-x-4">
+    <ul class="flex space-x-4 items-center">
+      <li>
+        <input
+          #searchInput
+          type="text"
+          placeholder="Search movies..."
+          (input)="onSearch(searchInput.value)"
+          class="px-2 py-1 rounded border border-gray-300"
+        />
+      </li>
+      <li>Kids</li>
+      <li>
+        <!-- bell icon -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="size-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.5"
+            d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0"
+          />
+        </svg>
+      </li>
+      <li>
+        <img src="images/Profile change.png" alt="Profile" />
+      </li>
+    </ul>
+  </div>
+</header>

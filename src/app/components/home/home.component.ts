@@ -14,21 +14,19 @@ import { Router } from '@angular/router';
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
-
   // to handle the image base URL
   public imageBaseUrl: string = environment.imageBaseUrl;
   // to handle the banner movie
   public bannerMovie: Movie | null = null;
   // to handle the list of movies
   public allPopularMovies: Movie[] = [];
-
   public allTrendingMovies: Movie[] = [];
   public allToRatedMovies: Movie[] = [];
   public allUpComing: Movie[] = [];
-  // to handle the apperance of the movie details dialog
+  // to handle the appearance of the movie details dialog
   public show: boolean = false;
 
-  constructor(private movieService: MovieService, private router:Router) {}
+  constructor(private movieService: MovieService, private router: Router) {}
 
   private getAllPopularMovies() {
     this.movieService.getPopularMovies().subscribe({
@@ -82,12 +80,11 @@ export class HomeComponent implements OnInit {
     this.getAllUpComing();
   }
 
-  playMovie(id: number) {
+  public playMovie(id: number) {
     this.router.navigate(['/watch', id]);
   }
 
   public showDetails() {
     this.show = true;
   }
-
 }

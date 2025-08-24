@@ -9,37 +9,35 @@ import { Subject } from 'rxjs';
   selector: 'app-navbar',
   imports: [FormsModule],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+  styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
-constructor(
-  private movieService:MovieService,
-  private router:Router
-) {}
+  constructor(private movieService: MovieService, private router: Router) {}
 
-searchTerm$ = new Subject<string>();
+  searchTerm$ = new Subject<string>();
 
-ngOnInit() {
-  this.searchTerm$.pipe(
-    debounceTime(600),
-    distinctUntilChanged(),
-    switchMap(term => this.movieService.searchMovies(term))
-  ).subscribe({
-    next: (res) => {
-      console.log(res.results);
-    },
-    error: (err) => {
-      console.error('Error searching movies:', err);
-    }
-  });
-}
+  ngOnInit() {
+    this.searchTerm$
+      .pipe(
+        debounceTime(600),
+        distinctUntilChanged(),
+        switchMap((term) => this.movieService.searchMovies(term))
+      )
+      .subscribe({
+        next: (res) => {
+          console.log(res.results);
+        },
+        error: (err) => {
+          console.error('Error searching movies:', err);
+        },
+      });
+  }
 
-onSearch(term: string) {
-  this.searchTerm$.next(term);
-}
+  onSearch(term: string) {
+    this.searchTerm$.next(term);
+  }
 
-
-    backToHome() {
+  backToHome() {
     this.router.navigate(['/']);
   }
 }

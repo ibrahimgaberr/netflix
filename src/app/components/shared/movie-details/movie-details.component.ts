@@ -7,25 +7,24 @@ import { Router } from '@angular/router';
   selector: 'app-movie-details',
   imports: [CommonModule],
   templateUrl: './movie-details.component.html',
-  styleUrl: './movie-details.component.css'
+  styleUrl: './movie-details.component.css',
 })
 export class MovieDetailsComponent {
-
   // Input property to receive movie details
   @Input() bannerDetails: Movie | null = null;
   @Input() show: boolean = false;
-  // @Input() imageBaseUrl: string = '';
 
   public imageBaseUrl: string = 'https://image.tmdb.org/t/p/original';
+
   @Output() close = new EventEmitter<void>();
 
-  constructor(private router:Router) {}
+  constructor(private router: Router) {}
 
-    playMovie(id: number) {
+  public playMovie(id: number) {
     this.router.navigate(['/watch', id]);
   }
 
-  onClose() {
+  public onClose() {
     this.close.emit();
   }
 }
